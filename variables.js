@@ -2,11 +2,11 @@
  * foo declared but not defined
  */
 var foo; 
-console.log(foo);
+console.log('foo is ' + foo);
 /*
  * bar has not been declared
  */
-console.log((typeof bar === undefined));
+console.log('Is typeof bar undefined? ' + (typeof bar === 'undefined'));
 /*
  * using bar must throw some error, commented to let script execute
  */ 
@@ -49,5 +49,39 @@ logFooV2();
 console.log('logFooV2() = ' + logFooV2());
 
 /*
- * But all those functions have been using foo which is a global variable and "they" globals are not good.
+ * But all those functions have been using foo which is a global variable and "they" say globals are not good.
+ */
+
+/*
+ * Function returns value of foo
+ */
+function logFooV3(){
+    if(typeof foo === 'undefined'){
+        var foo = 'No strings attached!';
+    }
+    return foo;
+}
+console.log('logFooV3() = ' + logFooV3()); //logs "No strings attached!"
+
+/*
+ * Wait...what? How? Why?
+ * As soon as JS encounters a statement like 'var variableName = "some value";', JS creates variable and doesn't initialise it and hoists it to top of the scope. So when JS reads logFooV3 the structure some how looks like
+ * +----------------------------------------------+
+ *  | #global_space
+ *  |  look or all var statements on global level and create variables like foo, logFooV3 etc. everything is still undefined but created or hoisted at top
+ *  |  set values to all created vars, time to set value for foo and logFooV3, logFooV3 is a function, functions create new scope
+ *  |  - #logFooV3 scope
+ *  |  - look or all var statements on function level and create variables like foo etc. everything is still undefined but created or hoisted at top of logFooV3.
+ *  |  - is typeof foo undefined?
+ *  |  -  - yes, so assign foo some value
+ *  |  - return foo
+ * +----------------------------------------------+
+ * This is known as hoisting. This lets you do the following. 
+ */
+bar = 'a bar of dark chocolate!'; //use variable here which has not been created. "use strict" will never let you do this. 
+console.log('when I say bar I mean ' + bar); //point to rememver
+var bar;
+
+/*
+ * More https://developer.mozilla.org/en/JavaScript/Reference/Statements/var#Examples.
  */
