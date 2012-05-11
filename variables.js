@@ -79,9 +79,17 @@ console.log('logFooV3() = ' + logFooV3()); //logs "No strings attached!"
  * This is known as hoisting. This lets you do the following. 
  */
 bar = 'a bar of dark chocolate!'; //use variable here which has not been created. "use strict" will never let you do this. 
-console.log('when I say bar I mean ' + bar); //point to rememver
+console.log('when I say bar I mean ' + bar); //point to remember
 var bar;
 
 /*
  * More https://developer.mozilla.org/en/JavaScript/Reference/Statements/var#Examples.
+ * So as of now we know undefined means a variable doesn't exist or has not been defined or initialised. But how do we diffrentiate between a non existant variable and an existing but non initialised/declared variable. Declaring a variable actually means assigning a value to a variable. 
+ */
+var baz; //baz is declared but is undefined or not initialised.
+console.log((baz==null));//baz will have null value
+baz = 'bazzinga!';//baz exists and is defined.
+/*
+ * The difference in meaning between undefined and null is mostly academic, and usually not very interesting. In practical programs, it is often necessary to check whether something 'has a value'. In these cases, the expression something == undefined may be used, because, even though they are not exactly the same value, null == undefined will produce true.
+ * Source: http://eloquentjavascript.net/chapter2.html
  */
