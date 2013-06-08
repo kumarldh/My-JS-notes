@@ -30,7 +30,7 @@ console.log('value of foo is -> (' + foo + ') and typeof foo is ' + typeof foo);
  * Function with no arguments, just console.logs something doesn't return anything, so return type is undefined
  */
 function logFooV1(){
-    console.log('Logging foo inside logFooV1()  -> '+foo);
+ console.log('Logging foo inside logFooV1()  -> '+foo);
 }
 logFooV1();
 var logFooV1ReturnValue = logFooV1(); 
@@ -92,4 +92,5 @@ baz = 'bazzinga!';//baz exists and is defined.
 /*
  * The difference in meaning between undefined and null is mostly academic, and usually not very interesting. In practical programs, it is often necessary to check whether something 'has a value'. In these cases, the expression something == undefined may be used, because, even though they are not exactly the same value, null == undefined will produce true.
  * Source: http://eloquentjavascript.net/chapter2.html
+ * But now I have some apprehensions about it.
  */

@@ -4,7 +4,6 @@
     public methods are defined by Classname.prototype.methodName = function(){...} and may be called from outside the object.
     prototype properties are defined by Classname.prototype.propertyName = someValue
     static properties are defined by Classname.propertyName = someValue
-
 */
 var id = 1;
 var Person = function(){
