@@ -25,7 +25,7 @@ Person.prototype = {
     shout: function(){
         console.log(this);
     }
-}
+};
 
 var Employee = function(n,a,g){
     var empId = '';
@@ -34,10 +34,10 @@ var Employee = function(n,a,g){
     };
     this.setEmpId =  function(val){
         empId = val;
-    }
+    };
     this.giveEmpPersonalInfo =  function (){
         return empPersonalInfo();
-    }
+    };
 };
 
 Employee.prototype = new Person();
@@ -53,25 +53,8 @@ e.shout();
 
 function Person() {
   var that = {};
-      if(!(that instanceOf this) {
-          that = new Person();
-      }
-      that.test = function() {
-          
-          
-         ... 
-          
-      }
-    
-    
-    retrun that;
-    
+  return that;
 }
-
-
-
-
-
 
 /*
     You cause a class to inherit using ChildClassName.prototype = new ParentClass();.

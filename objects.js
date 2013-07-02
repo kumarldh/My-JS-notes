@@ -40,3 +40,38 @@ for(var property in bar){
 for(var i=0; i < bar.length; i++){
     console.log(bar[i]);
 }
+
+/*
+ * An object is a container of properties, where a property has a name and a value. 
+ * A property name can be any string, including the empty string. A property value 
+ * can be any JavaScript value except for undefined.
+ * 
+ */
+
+//Object literals
+var Person = {};
+
+//Setting properties
+Person.first_name = "John";
+Person["last_name"] = "Doe";
+//Getting properties
+console.log("Like an array key " + Person["first_name"]);
+console.log("Using a dot operator " + Person.last_name);
+//Or using "this"
+Person.getInfo = function(){
+    //this refers to "this" object which is Person "John Doe"
+    return (this.first_name + " "+ this.last_name);
+};
+console.log(Person.getInfo());
+
+//Objects are passed around by reference. They are never copied.
+var a = {}, b = {}, c = {};
+// a, b, and c each refer to a different empty object
+var d = e = f = {};
+// d, e, and f all refer to the same empty object
+a.some_property = "Limited to a";
+d.some_property = "d, e and f will have same copy!";
+
+console.log(a.some_property);
+console.log(b.some_property);//undefined
+console.log(e.some_property);

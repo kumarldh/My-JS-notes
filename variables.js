@@ -87,10 +87,34 @@ var bar;
  * So as of now we know undefined means a variable doesn't exist or has not been defined or initialised. But how do we diffrentiate between a non existant variable and an existing but non initialised/declared variable. Declaring a variable actually means assigning a value to a variable. 
  */
 var baz; //baz is declared but is undefined or not initialised.
-console.log((baz==null));//baz will have null value
+console.log((baz === null));//baz will have null value
 baz = 'bazzinga!';//baz exists and is defined.
 /*
  * The difference in meaning between undefined and null is mostly academic, and usually not very interesting. In practical programs, it is often necessary to check whether something 'has a value'. In these cases, the expression something == undefined may be used, because, even though they are not exactly the same value, null == undefined will produce true.
  * Source: http://eloquentjavascript.net/chapter2.html
  * But now I have some apprehensions about it.
  */
+
+
+/*
+ * Unlike many other languages, blocks in JavaScript do not create a new scope, 
+ * so variables should be defined at the top of the function, not in blocks.
+ * 
+ **/
+var hello = "Hello ";
+{
+    var world = "World!";
+}
+console.log(("Hello World!" === (hello + world)));//true
+/*
+ * The falsy values:
+ * · false
+ * · null
+ * · undefined
+ * · The empty string ''
+ * · The number 0
+ * · The number NaN
+ * All other values are truthy, including true, the string 'false', and all objects.
+ * 
+ */
+console.log((false === "false"));//false, "false" is a string
