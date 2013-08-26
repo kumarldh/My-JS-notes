@@ -1,0 +1,3 @@
+/*
+ * JS uses prototypal inheritance. 
+ */

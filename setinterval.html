@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>setInterval</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width">
+<style>
+body{
+    margin: 0 auto;
+}
+h1{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-size:500px;
+    text-align: center;
+}
+</style>
+    </head>
+    <body>
+        <h1 id="elem">*</h1>
+<script>
+(function(){
+    var elem = document.getElementById("elem")
+        i = 0
+        red = '#F00',
+        green = '#0F0';
+    setInterval(function(){
+        if((++i)%2 === 0){
+            elem.style.color = green;
+        }else{
+            elem.style.color = red;
+        }
+    }, 1000);
+})();
+</script>
+    </body>
+</html>

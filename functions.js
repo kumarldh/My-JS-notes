@@ -48,3 +48,64 @@ var greet = {
 };
 console.log(greet.hello_method());
 console.log(greet.hey_method("John Doe"));
+
+/*
+ * The Constructor Invocation Pattern
+ * If a function is invoked with the new prefix, then a new object will be created 
+ * with a hidden link to the value of the function's prototype member, and this 
+ * will be bound to that new object.
+ * 
+ */
+var hello = function(name){
+    var name = name || "no name?";
+    return function(name){ return("Hello " + name);}; //return a function, anonoymous 
+    //function, and its a closure!
+};
+var world = new hello();//Functions that are intended to be used with the new 
+//prefix are called constructors. hello() is a contstructor. 
+console.log(world("World!"));
+console.log( "hello.prototype.constructor = "+ hello.prototype.constructor );
+
+/*
+ * The Apply Invocation Pattern
+ * The apply method lets us construct an array of arguments to use to invoke a 
+ * function. It also lets us choose the value of this. The apply method takes two 
+ * parameters. The first is the value that should be bound to this. The second is 
+ * an array of parameters.
+ */
+function multiply(x, y){
+    return (x*y);
+}
+console.log(multiply.apply(null, [1,2]));
+console.log(multiply.apply(null, [2,3]));
+
+//Anonymous functions, a) is name for the functon and b is anonoymous function, 
+//function multimultiply(), ↑, is a named function.
+//            ↓ a)                     ↓ b)
+var name_for_an_anoynous_function = function(){
+    console.log('anonymous function');
+};
+//compare the difference
+console.log(multiply.prototype.constructor ); // returns [Function: multiply] -- 
+//multiply
+console.log(multiply.name ); // multiply
+console.log(name_for_an_anoynous_function.prototype.constructor ); // returns [Function] 
+//-- no name 
+console.log(name_for_an_anoynous_function.name ); // returns nothing
+
+/*
+ * Function Scope.
+ * Variable defined inside a function, with var keyword, are not visible outside 
+ * function but function's internal body can access variables declared outside its 
+ * body. Let's explore it.
+ */
+(function(){//Using immediately invoked function expression for this example.
+    var global_a = 'Global A';
+    function can_access_global_a(){
+        var local_a = 'Local var of method can_access_global_a()';
+        return global_a;
+    }
+    console.log(can_access_global_a());
+//    console.log(local_a);//undefined!!!!
+//look at variables.js for more.
+})();
